@@ -9,7 +9,7 @@
     
     
     <form class="mt-5">
-        <mat-form-field appearance="outline" class="fecha mt-3">
+        <mat-form-field appearance="outline" class="fecha mt-3" required>
             <mat-label>Sala</mat-label>
             <mat-select [(ngModel)]="salaId" name="salaId">
               <mat-option *ngFor="let sala of salas" [value]="sala.id">
