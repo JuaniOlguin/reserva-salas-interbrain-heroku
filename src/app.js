@@ -1,6 +1,5 @@
 require("dotenv").config();
 const Cors = require("cors");
-npm 
 var mysql = require('mysql2');
 var createError = require('http-errors');
 
