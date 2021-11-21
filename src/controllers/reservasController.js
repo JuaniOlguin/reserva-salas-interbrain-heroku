@@ -18,7 +18,7 @@ const controller = {
     },
     //metodo para guardar una nueva reserva, siempre que no sea en el mismo horario que una existente
     saveOne: async (req, res) => {
-        console.log("Empieza save one");
+        // console.log("Empieza save one");
         let { nombre, fecha, email, sala } = req.body;
         
         let t;
@@ -28,7 +28,7 @@ const controller = {
             email,
             salaId: sala
         }
-        console.log("Fecha antes: "+objAux.fecha);
+        // console.log("Fecha antes: "+objAux.fecha);
         try {
             let reservas = await Reserva.findAll({
                 attributes: [
@@ -41,13 +41,19 @@ const controller = {
                     'updatedAt'
                 ]
             });
-            let salas = await Salas.findAll();
+            // let salas = await Salas.findAll();
             let salaReserva = await Salas.findByPk(objAux.salaId);
 
             if(!salaReserva){
                 throw new Error("Error, sala inexistente")
             }
+
+            let fechaIng = new Date(objAux.fecha)
+            let fechaHoy = new Date();
             
+            if (fechaIng < fechaHoy) {
+                throw new Error("Horario no disponible");
+            }
             for (let index = 0; index < reservas.length; index++) {
                 if(reservas[index].fecha == objAux.fecha || objAux.fecha == null || objAux.fecha == undefined){
                     if(reservas[index].salaId == salaReserva.id){
