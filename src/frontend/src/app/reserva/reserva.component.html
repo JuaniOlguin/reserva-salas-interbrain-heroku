@@ -8,7 +8,7 @@
     
     
     
-    <form class="mt-5">
+    <form (submit)="createReserva()" class="mt-5">
         <mat-form-field appearance="outline" class="fecha mt-3">
             <mat-label>Sala</mat-label>
             <mat-select [(ngModel)]="salaId" name="salaId" required>
@@ -46,7 +46,7 @@
         
         
         
-        <button (click)="createReserva($event)" mat-raised-button color="primary" class="align-self-center boton-reserva" type="submit">Reservar</button>
+        <button mat-raised-button color="primary" class="align-self-center boton-reserva">Reservar</button>
         <mat-toolbar *ngIf="successMsg" color="accent" class="mt-4">{{successMsg}}</mat-toolbar>
     </form>
 </div>

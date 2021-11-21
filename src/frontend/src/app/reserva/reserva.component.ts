@@ -35,8 +35,7 @@ export class ReservaComponent implements OnInit {
       });
   }
 
-  createReserva(event: Event){
-    event.preventDefault();
+  createReserva(){
     this.successMsg = '';
     this.errorMsg = '';
     
@@ -51,6 +50,9 @@ export class ReservaComponent implements OnInit {
         this.hora = '';
         this.email = '';
         this.salaId = 0;
+        
+        this.ngOnInit();
+
       },(error : ErrorEvent) => {
         console.log(error.error.message);
         this.errorMsg = JSON.stringify(error.error.message);
