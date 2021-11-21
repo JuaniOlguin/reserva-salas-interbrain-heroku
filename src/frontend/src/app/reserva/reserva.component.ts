@@ -39,6 +39,10 @@ export class ReservaComponent implements OnInit {
       });
   }
 
+  reloadCurrentPage() {
+    window.location.reload();
+ }
+
   createReserva(){
     this.successMsg = '';
     this.errorMsg = '';

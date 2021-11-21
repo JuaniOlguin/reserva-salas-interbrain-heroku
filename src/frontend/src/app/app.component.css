@@ -1,5 +1,6 @@
 .container{
     margin-top: 20px;
+    height: 150vh;
 }
 .collapse{
     justify-content: center;
@@ -15,14 +16,7 @@ li:hover{
     color:white!important;
     text-decoration: none;
 }
-.footer{
-    height: 100px;
-    background-color: rgb(63, 81, 181);
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
-}
+
 li{
     border-bottom: solid 1px black; 
     padding: 10px;
