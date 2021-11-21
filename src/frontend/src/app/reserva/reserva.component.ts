@@ -1,6 +1,5 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Reserva } from '../Reserva';
 import { ReservasService } from '../reservas.service';
 import { Sala } from '../Sala';
@@ -48,7 +47,7 @@ export class ReservaComponent implements OnInit {
     this.reservasService.createReserva(this.nombre, this.fecha , this.email, this.salaId)
       .subscribe((reservaCreada: Reserva) => {
         this.successMsg = `Reserva creada exitosamente para el día ${this.fecha}`;
-        this.fecha = 'Elija una fecha';
+        this.fecha = '';
         this.nombre = '';
         this.hora = '';
         this.email = '';
