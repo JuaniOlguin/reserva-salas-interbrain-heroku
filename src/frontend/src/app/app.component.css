@@ -1,0 +1,27 @@
+.container{
+    margin-top: 20px;
+}
+.collapse{
+    justify-content: center;
+}
+a{
+    color:black;
+}
+a:hover{
+    color:white!important;
+}
+li:hover{
+    background-color: rgb(63, 81, 181);
+    color:white!important;
+    text-decoration: none;
+}
+.footer{
+    height: 100px;
+    background-color: rgb(63, 81, 181);
+    position: relative;
+    bottom: 0;
+}
+li{
+    border-bottom: solid 1px black; 
+    padding: 10px;
+}
