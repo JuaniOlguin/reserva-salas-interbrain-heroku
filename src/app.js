@@ -14,7 +14,7 @@ const port = process.env.PORT || 8080;
 //directorio donde angular genera el build
 app.use(express.static(path.join(__dirname, 'bin')));
 //rutas
-app.get('/*', function(req, res) {
+app.get('/#/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
