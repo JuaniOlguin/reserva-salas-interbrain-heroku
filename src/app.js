@@ -1,6 +1,6 @@
 require("dotenv").config();
 const Cors = require("cors");
-var mysql = require('mysql2');
+// var mysql = require('mysql2');
 var createError = require('http-errors');
 
 var express = require('express');
@@ -20,12 +20,12 @@ const port = process.env.PORT || 8080;
 app.use(express.static(path.join(__dirname, 'bin')));
 
 //conexion bd
-app.use(mysqlConnection(mysql, {
-  host: '',
-  user: '',
-  password: '',
-  database: ''
-}, 'request'));
+// app.use(mysqlConnection(mysql, {
+//   host: '',
+//   user: '',
+//   password: '',
+//   database: ''
+// }, 'request'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
