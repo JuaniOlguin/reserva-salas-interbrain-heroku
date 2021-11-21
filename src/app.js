@@ -61,9 +61,7 @@ app.use(function(err, req, res, next) {
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
-app.get('/reserva', function(req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
+
 
 app.listen(port, ()=> {
   console.log('Server started on port '+port);
