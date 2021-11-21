@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:3000'
+  API_URL: 'https://quiet-waters-15017.herokuapp.com'
 };
 
 /*
