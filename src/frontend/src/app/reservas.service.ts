@@ -20,8 +20,7 @@ export class ReservasService {
   }
 
   createReserva(nombre: string, fecha: string, email: string, sala: number): Observable<Reserva>{
-    return this.http.post<Reserva>(`${this.BASE_URL}/reservas`,
-    {nombre, fecha, email, sala});
+    return this.http.post<Reserva>(`${this.BASE_URL}/reservas`, {nombre, fecha, email, sala});
   }
 
   deleteReserva(id: number): Observable<any>{

@@ -50,11 +50,9 @@ const controller = {
             
             for (let index = 0; index < reservas.length; index++) {
                 if(reservas[index].fecha == objAux.fecha || objAux.fecha == null || objAux.fecha == undefined){
-                    salas.forEach(s => {
-                        if(reservas[index].salaId == s.id){
-                            throw new Error("Horario no disponible");
-                        }
-                    });
+                    if(reservas[index].salaId == salaReserva.id){
+                        throw new Error("Horario no disponible");
+                    }
                 }
             }
             

@@ -22,7 +22,6 @@ export class ReservaComponent implements OnInit {
   public email: string;
   public salaId: number;
   public salas: Sala[];
-  public formValid: boolean;
   
 
   constructor(private reservasService: ReservasService, public datepipe: DatePipe) { }
