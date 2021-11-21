@@ -59,9 +59,7 @@ app.use(function(err, req, res, next) {
 });
 
 //rutas
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'bin/index.html'));
-});
+
 
 app.listen(port, ()=> {
   console.log('Server started on port '+port);
