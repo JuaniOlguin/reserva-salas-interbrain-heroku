@@ -20,6 +20,8 @@ li:hover{
     background-color: rgb(63, 81, 181);
     position: relative;
     bottom: 0;
+    width: 100%;
+    margin: 0;
 }
 li{
     border-bottom: solid 1px black; 
