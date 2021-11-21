@@ -12,11 +12,12 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
+
 var app = express();
 //puerto que usa heroku
 const port = process.env.PORT || 8080;
 //directorio donde angular genera el build
-app.use(express.static(path.join(__dirname, './bin/index.html')));
+app.use(express.static(path.join(__dirname, 'bin')));
 
 //conexion bd
 // app.use(mysqlConnection(mysql, {
@@ -57,7 +58,10 @@ app.use(function(err, req, res, next) {
 });
 
 //rutas
-app.get('/*', function(req, res) {
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
+});
+app.get('/reserva', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
