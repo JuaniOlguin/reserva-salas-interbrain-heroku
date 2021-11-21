@@ -1,7 +1,6 @@
 require("dotenv").config();
 const Cors = require("cors");
-
-var mysqlConnection = require('express-myconnection');
+npm 
 var mysql = require('mysql2');
 var createError = require('http-errors');
 
@@ -19,7 +18,7 @@ var app = express();
 //puerto que usa heroku
 const port = process.env.PORT || 8080;
 //directorio donde angular genera el build
-app.use(express.static(path.join(_dirname, 'bin')));
+app.use(express.static(path.join(__dirname, 'bin')));
 
 //conexion bd
 app.use(mysqlConnection(mysql, {
