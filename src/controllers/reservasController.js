@@ -41,22 +41,22 @@ const controller = {
                     'updatedAt'
                 ]
             });
-            // let salas = await Salas.findAll();
-            // let salaReserva = await Salas.findByPk(objAux.salaId);
+            let salas = await Salas.findAll();
+            let salaReserva = await Salas.findByPk(objAux.salaId);
 
-            // if(!salaReserva){
-            //     throw new Error("Error, sala inexistente")
-            // }
+            if(!salaReserva){
+                throw new Error("Error, sala inexistente")
+            }
             
-            // for (let index = 0; index < reservas.length; index++) {
-            //     if(reservas[index].fecha == objAux.fecha){
-            //         salas.forEach(s => {
-            //             if(reservas[index].salaId == s.id){
-            //                 throw new Error("Horario no disponible");
-            //             }
-            //         });
-            //     }
-            // }
+            for (let index = 0; index < reservas.length; index++) {
+                if(reservas[index].fecha == objAux.fecha){
+                    salas.forEach(s => {
+                        if(reservas[index].salaId == s.id){
+                            throw new Error("Horario no disponible");
+                        }
+                    });
+                }
+            }
             
             t = await sequelize.transaction();
             let nuevaReserva = await Reserva.create(objAux,{ transaction: t});
