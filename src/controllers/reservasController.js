@@ -30,9 +30,6 @@ const controller = {
         }
         console.log("Fecha antes: "+objAux.fecha);
         try {
-            if(!objAux.nombre || !objAux.fecha || !objAux.email || !objAux.salaId){
-                throw new Error("Todos los campos son obligatorios")
-            }
             let reservas = await Reserva.findAll({
                 attributes: [
                     'id',
@@ -52,12 +49,7 @@ const controller = {
             }
             
             for (let index = 0; index < reservas.length; index++) {
-                // console.log("Fecha Index: " + reservas[index].fecha);
-                // console.log("Fecha Auxiliar: " + objAux.fecha);
-                // console.log("==============Comparacion ============");
-                //     console.log(reservas[index].fecha +" == "+ objAux.fecha);
                 if(reservas[index].fecha == objAux.fecha){
-                    // console.log("Entro al if");
                     salas.forEach(s => {
                         if(reservas[index].salaId == s.id){
                             throw new Error("Horario no disponible");

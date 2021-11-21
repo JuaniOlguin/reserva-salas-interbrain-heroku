@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //modulos de material
@@ -46,6 +46,7 @@ import { DatePipe } from '@angular/common';
     MatSelectModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     DatePipe,
