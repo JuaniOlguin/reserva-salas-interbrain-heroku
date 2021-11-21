@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 //modulos de material
@@ -21,7 +21,7 @@ import { ReservasListComponent } from './reservas-list/reservas-list.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HomeComponent } from './home/home.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -45,12 +45,11 @@ import { DatePipe } from '@angular/common';
     MatToolbarModule,
     MatSelectModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [
     DatePipe,
-    
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

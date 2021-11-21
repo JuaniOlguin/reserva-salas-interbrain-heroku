@@ -180,6 +180,7 @@ AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)();
 AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]] });
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjector"]({ providers: [
         _angular_common__WEBPACK_IMPORTED_MODULE_18__["DatePipe"],
+        { provide: _angular_common__WEBPACK_IMPORTED_MODULE_18__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_18__["HashLocationStrategy"] }
     ], imports: [[
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"],
@@ -194,8 +195,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjecto
             _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"],
             _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MatSelectModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]
+            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
         _home_home_component__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
@@ -213,8 +213,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_19__["ɵɵdefineInjecto
         _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_12__["MatToolbarModule"],
         _angular_material_select__WEBPACK_IMPORTED_MODULE_16__["MatSelectModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"]] }); })();
+        _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"]] }); })();
 
 
 /***/ }),
@@ -589,6 +588,8 @@ class ReservaComponent {
         this.datepipe = datepipe;
     }
     ngOnInit() {
+        this.fechaHoy = new Date();
+        console.log(this.fechaHoy);
         this.reservasService.getSalas()
             .subscribe((salas) => {
             this.salas = salas;
@@ -603,21 +604,19 @@ class ReservaComponent {
         this.fecha = fechaAux + ' ' + this.hora + 'Z' || false;
         this.reservasService.createReserva(this.nombre, this.fecha, this.email, this.salaId)
             .subscribe((reservaCreada) => {
-            this.successMsg = `Reserva creada exitosamente para el día ${this.fecha}`;
+            this.successMsg = `Reserva creada exitosamente para el día ${fechaAux} a las ${this.hora}hs`;
             this.fecha = '';
             this.nombre = '';
             this.hora = '';
             this.email = '';
             this.salaId = 0;
-            this.ngOnInit();
         }, (error) => {
-            console.log(error.error.message);
-            this.errorMsg = JSON.stringify(error.error.message);
+            this.errorMsg = error.error.message;
         });
     }
 }
 ReservaComponent.ɵfac = function ReservaComponent_Factory(t) { return new (t || ReservaComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_reservas_service__WEBPACK_IMPORTED_MODULE_1__["ReservasService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_2__["DatePipe"])); };
-ReservaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ReservaComponent, selectors: [["app-reserva"]], decls: 40, vars: 10, consts: [["color", "warn", 4, "ngIf"], [1, "form-container", "mt-5"], [1, "fw-light", "mt-5"], [1, "mt-5", 3, "submit"], ["appearance", "outline", 1, "fecha", "mt-3"], ["name", "salaId", "required", "", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["appearance", "outline", 1, "mt-3", "fecha"], ["matInput", "", "name", "fecha", "required", "", 3, "ngModel", "matDatepicker", "ngModelChange"], ["matSuffix", "", 3, "for"], ["picker", ""], ["name", "hora", "required", "", 3, "ngModel", "ngModelChange"], ["value", "09:00:00"], ["value", "10:00:00"], ["value", "11:00:00"], ["value", "12:00:00"], ["appearance", "outline", 1, "form-input"], ["name", "name", "matInput", "", "placeholder", "Nombre", "required", "", 3, "ngModel", "ngModelChange"], ["name", "email", "matInput", "", "placeholder", "Email", "required", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "color", "primary", 1, "align-self-center", "boton-reserva"], ["color", "accent", "class", "mt-4", 4, "ngIf"], ["color", "warn"], [3, "value"], ["color", "accent", 1, "mt-4"]], template: function ReservaComponent_Template(rf, ctx) { if (rf & 1) {
+ReservaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ReservaComponent, selectors: [["app-reserva"]], decls: 40, vars: 11, consts: [["color", "warn", 4, "ngIf"], [1, "form-container", "mt-5"], [1, "fw-light", "mt-5"], [1, "mt-5", 3, "submit"], ["appearance", "outline", 1, "fecha", "mt-3"], ["name", "salaId", "required", "", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["appearance", "outline", 1, "mt-3", "fecha"], ["matInput", "", "name", "fecha", "required", "", 3, "ngModel", "min", "matDatepicker", "ngModelChange"], ["matSuffix", "", 3, "for"], ["picker", ""], ["name", "hora", "required", "", 3, "ngModel", "ngModelChange"], ["value", "09:00:00"], ["value", "10:00:00"], ["value", "11:00:00"], ["value", "12:00:00"], ["appearance", "outline", 1, "form-input"], ["name", "name", "matInput", "", "placeholder", "Nombre", "required", "", 3, "ngModel", "ngModelChange"], ["name", "email", "matInput", "", "placeholder", "Email", "required", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "color", "primary", 1, "align-self-center", "boton-reserva"], ["color", "accent", "class", "mt-4", 4, "ngIf"], ["color", "warn"], [3, "value"], ["color", "accent", 1, "mt-4"]], template: function ReservaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ReservaComponent_mat_toolbar_0_Template, 2, 1, "mat-toolbar", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h1", 2);
@@ -694,7 +693,7 @@ ReservaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.salas);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.fecha)("matDatepicker", _r2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.fecha)("min", ctx.fechaHoy)("matDatepicker", _r2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("for", _r2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
