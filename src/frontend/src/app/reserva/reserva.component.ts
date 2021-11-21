@@ -49,7 +49,7 @@ export class ReservaComponent implements OnInit {
         this.hora = '';
         this.email = '';
         this.salaId = 0;
-      },(error : HttpErrorResponse) => {
+      },(error : ErrorEvent) => {
         console.log(error.error.message);
         
         this.errorMsg = JSON.stringify(error.error.message);
