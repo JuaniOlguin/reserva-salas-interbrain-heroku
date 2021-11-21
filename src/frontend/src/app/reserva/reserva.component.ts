@@ -22,11 +22,15 @@ export class ReservaComponent implements OnInit {
   public email: string;
   public salaId: number;
   public salas: Sala[];
+  public fechaHoy: Date;
   
 
   constructor(private reservasService: ReservasService, public datepipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.fechaHoy = new Date();
+    console.log(this.fechaHoy);
+    
     this.reservasService.getSalas()
       .subscribe((salas: Sala[]) => {
         this.salas = salas;
@@ -44,18 +48,14 @@ export class ReservaComponent implements OnInit {
 
     this.reservasService.createReserva(this.nombre, this.fecha , this.email, this.salaId)
       .subscribe((reservaCreada: Reserva) => {
-        this.successMsg = `Reserva creada exitosamente para el día ${this.fecha}`;
+        this.successMsg = `Reserva creada exitosamente para el día ${fechaAux} a las ${this.hora}hs`;
         this.fecha = '';
         this.nombre = '';
         this.hora = '';
         this.email = '';
         this.salaId = 0;
-        
-        this.ngOnInit();
-
       },(error : ErrorEvent) => {
-        console.log(error.error.message);
-        this.errorMsg = JSON.stringify(error.error.message);
+        this.errorMsg = error.error.message;
       })
   }
 
