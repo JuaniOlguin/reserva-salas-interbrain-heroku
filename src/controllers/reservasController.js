@@ -44,6 +44,7 @@ const controller = {
             // let salas = await Salas.findAll();
             let salaReserva = await Salas.findByPk(objAux.salaId);
 
+            //validaciones del lado del servidor/////////
             if(!salaReserva){
                 throw new Error("Error, sala inexistente")
             }
@@ -65,7 +66,9 @@ const controller = {
                     }
                 }
             }
-            
+            ///////////////////////////////////////////////////
+
+
             t = await sequelize.transaction();
             let nuevaReserva = await Reserva.create(objAux,{ transaction: t});
 
@@ -76,6 +79,7 @@ const controller = {
             res.status(500).json({ data: error.message });
         }
     },
+    //no utilizado
     updateOneById: async (req, res) => {
         let { nombre, fecha, email, sala } = req.body;
         let{ id } = req.params;
@@ -115,6 +119,8 @@ const controller = {
             res.status(500).json({ error: error.message });
         }
     },
+
+    //eliminar una reserva 
     deleteOneById: async (req, res) => {
         let { id } = req.params;
         let t;
