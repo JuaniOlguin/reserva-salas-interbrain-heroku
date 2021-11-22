@@ -30,7 +30,6 @@ export class ReservaComponent implements OnInit {
   ngOnInit(): void {
     this.fechaHoy = new Date();
     console.log(this.fechaHoy);
-    
     this.reservasService.getSalas()
       .subscribe((salas: Sala[]) => {
         this.salas = salas;
@@ -40,17 +39,21 @@ export class ReservaComponent implements OnInit {
   }
 
   reloadCurrentPage() {
-    window.location.reload();
+    if(this.successMsg){
+      window.location.reload();
+    }
  }
 
   createReserva(){
-    this.successMsg = '';
-    this.errorMsg = '';
     
-    let fechaAux = this.datepipe.transform(this.fecha, 'MM/dd/yyyy');
-    this.fecha = fechaAux+' '+this.hora+'Z' || '';
+    let fechaAux = '';
+    if(this.fecha){
+      this.successMsg = '';
+      this.errorMsg = '';
+      fechaAux = this.datepipe.transform(this.fecha, 'MM/dd/yyyy') || '';
+      this.fecha = fechaAux+' '+this.hora+'Z' || '';
 
-    this.reservasService.createReserva(this.nombre, this.fecha , this.email, this.salaId)
+      this.reservasService.createReserva(this.nombre, this.fecha , this.email, this.salaId)
       .subscribe((reservaCreada: Reserva) => {
         this.successMsg = `Reserva creada exitosamente para el día ${fechaAux} a las ${this.hora}hs`;
         this.fecha = '';
@@ -61,6 +64,8 @@ export class ReservaComponent implements OnInit {
       },(error : ErrorEvent) => {
         this.errorMsg = error.error.message;
       })
+    }else{
+      this.errorMsg = 'Todos los campos son obligatorios'
+    }
   }
-
 }

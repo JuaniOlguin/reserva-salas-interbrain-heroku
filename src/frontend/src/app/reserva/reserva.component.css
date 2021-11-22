@@ -33,3 +33,6 @@ form{
     text-align: center;
     overflow-wrap: break-word;
 }
+.datepicker{
+    border-color: red!important;
+}
