@@ -25,6 +25,7 @@ Link a la aplicación: https://quiet-waters-15017.herokuapp.com
 ## Frontend: Angular 11, Angular Material y Bootstrap 5
 
 - Decidí utilizar Angular por los mismos motivos que elegí Node como lenguaje de backend, para ahondar un poco más mi conocimiento sobre ellos, ya que en ambos casos mi dominio es bastante básico.
+- Desarrolé 2 componentes principales, uno es 'reservas', en el cual esta toda la lógica del formulario de creación de reservas, el otro es 'reservas-list', donde se muestra una lista con todas las reservas y se puede cancelar cualquiera de ellas. 
 - Bootstrap 5 es un framework bastante útil que simplifica la creación de la mayoría de componentes que se utilizan al crear una página web.
 - Angular Material facilita muchos componentes con una gran variedad de comportamientos para los mismos.
 
