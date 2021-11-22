@@ -25,10 +25,10 @@ Link a la aplicación: https://quiet-waters-15017.herokuapp.com
 ## Frontend: Angular 11, Angular Material y Bootstrap 5
 
 - Decidí utilizar Angular por los mismos motivos que elegí Node como lenguaje de backend, para aumentar un poco más mi conocimiento sobre ellos, ya que en ambos casos mi dominio es bastante básico.
-- Desarrolé 2 componentes principales, uno es 'reservas', en el cual está toda la lógica del formulario de creación de reservas, el otro es 'reservas-list', donde se muestra una lista con todas las reservas y se puede cancelar cualquiera de ellas. 
+- Desarrolé dos componentes principales, uno es 'reservas', en el cual está toda la lógica del formulario de creación de reservas, el otro es 'reservas-list', donde se muestra una lista con todas las reservas y se puede cancelar cualquiera de ellas. 
 - Bootstrap 5 es un framework bastante útil que simplifica la creación de la mayoría de componentes que se utilizan al crear una página web.
 - Angular Material facilita muchos componentes con una gran variedad de comportamientos para los mismos.
 
 ## Deploy de la app en Heroku
 
-- Tomé la decisión de realizar un deploy en la plataforma Heroku, la cual provee addons como JawsDB MySQL, para hostear una base de datos en MySQL y asi poder guardar las reservas en ella
+- Tomé la decisión de realizar un deploy en la plataforma Heroku, la cual provee addons como JawsDB MySQL, para hostear una base de datos en MySQL y así poder guardar las reservas en ella
