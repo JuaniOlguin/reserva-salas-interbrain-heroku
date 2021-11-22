@@ -1,5 +1,7 @@
 <mat-progress-spinner *ngIf="loading"></mat-progress-spinner>
-<mat-toolbar *ngIf="successMsg" color="accent">{{successMsg}}</mat-toolbar>
+<div *ngIf="successMsg" class="alert alert-success mt-4 msj-exito" role="alert">
+    {{successMsg}}
+</div>
 <mat-toolbar *ngIf="errorMsg" color="warn">{{successMsg}}</mat-toolbar>
 
 <div *ngIf="!loading && !loading" class="container">

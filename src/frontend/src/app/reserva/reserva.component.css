@@ -26,5 +26,10 @@ form{
     width: 75%;
 }
 .boton-reserva{
-    width: 75%;
+    width: 30%;
+    padding: 10px;
+}
+.msj-exito{
+    text-align: center;
+    overflow-wrap: break-word;
 }

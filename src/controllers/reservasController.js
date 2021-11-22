@@ -51,6 +51,10 @@ const controller = {
             let fechaIng = new Date(objAux.fecha)
             let fechaHoy = new Date();
             
+            if (objAux.fecha == null){
+                throw new Error("La fecha es un campo obligatorio");
+            }
+
             if (fechaIng < fechaHoy) {
                 throw new Error("Horario no disponible");
             }

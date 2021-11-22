@@ -45,7 +45,7 @@ import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/commo
     MatToolbarModule,
     MatSelectModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     DatePipe,

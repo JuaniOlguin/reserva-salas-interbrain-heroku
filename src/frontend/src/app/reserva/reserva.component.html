@@ -2,7 +2,8 @@
 
 
 <div class="form-container mt-2">
-    <h1 class="fw-light mt-5">Nueva reserva</h1>
+    <h1 *ngIf=!successMsg class="fw-light mt-5">Nueva reserva</h1>
+    <h1 *ngIf=successMsg class="fw-light mt-5">Reserva exitosa</h1>
     <form *ngIf=!successMsg (submit)="createReserva()" class="mt-5">
         <mat-form-field appearance="outline" class="fecha mt-3">
             <mat-label>Sala</mat-label>
@@ -13,14 +14,14 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="mt-3 fecha">
+        <mat-form-field appearance="outline" class="fecha">
             <mat-label>Elija una fecha</mat-label>
             <mat-datepicker #picker disabled="false"></mat-datepicker>
             <input [(ngModel)]="fecha" matInput [min]="fechaHoy" [matDatepicker]="picker" name="fecha" required disabled>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             
         </mat-form-field>
-        <mat-form-field appearance="outline" class="fecha mt-3">
+        <mat-form-field appearance="outline" class="fecha">
             <mat-label>Elija una horario</mat-label>
             <mat-select [(ngModel)]="hora" name="hora" required>
               <mat-option value='09:00:00'>9:00 - 10:00</mat-option>
@@ -41,8 +42,10 @@
         <button mat-raised-button color="primary" class="align-self-center boton-reserva">Reservar</button>
     </form>
     
-    <mat-toolbar *ngIf="successMsg" color="accent" class="mt-4">{{successMsg}}</mat-toolbar>
-    
-    <a *ngIf="successMsg" (click)="reloadCurrentPage()" mat-raised-button color="primary" class="mt-5">Nueva reserva</a>
+    <div *ngIf="successMsg" class="alert alert-success mt-4 msj-exito" role="alert">
+        {{successMsg}}
+    </div>
+
+    <a *ngIf="successMsg" (click)="reloadCurrentPage()" mat-raised-button color="primary" class="mt-5 boton-reserva">Nueva reserva</a>
 
 </div>
