@@ -29,7 +29,7 @@ export class ReservaComponent implements OnInit {
 
   ngOnInit(): void {
     this.fechaHoy = new Date();
-    console.log(this.fechaHoy);
+    
     this.reservasService.getSalas()
       .subscribe((salas: Sala[]) => {
         this.salas = salas;

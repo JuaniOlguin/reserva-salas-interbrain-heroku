@@ -404,7 +404,6 @@ class ReservasListComponent {
         });
     }
     cancelarReserva(id) {
-        console.log(id);
         this.reservasService.deleteReserva(id)
             .pipe(//operador de rxjs
         Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["mergeMap"])(() => this.reservasService.getReservas()))
@@ -685,7 +684,6 @@ class ReservaComponent {
     }
     ngOnInit() {
         this.fechaHoy = new Date();
-        console.log(this.fechaHoy);
         this.reservasService.getSalas()
             .subscribe((salas) => {
             this.salas = salas;

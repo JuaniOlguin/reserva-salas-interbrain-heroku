@@ -34,8 +34,7 @@ export class ReservasListComponent implements OnInit {
   }
 
   cancelarReserva(id: number){
-    console.log(id);
-    
+  
     this.reservasService.deleteReserva(id)
       .pipe( //operador de rxjs
         mergeMap(() => this.reservasService.getReservas())

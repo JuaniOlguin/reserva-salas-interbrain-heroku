@@ -18,7 +18,7 @@ const controller = {
     },
     //metodo para guardar una nueva reserva, siempre que no sea en el mismo horario que una existente
     saveOne: async (req, res) => {
-        // console.log("Empieza save one");
+       
         let { nombre, fecha, email, sala } = req.body;
         
         let t;
@@ -28,7 +28,7 @@ const controller = {
             email,
             salaId: sala
         }
-        // console.log("Fecha antes: "+objAux.fecha);
+        
         try {
             let reservas = await Reserva.findAll({
                 attributes: [
