@@ -33,4 +33,4 @@ Link a la aplicación: https://quiet-waters-15017.herokuapp.com
 
 - Tomé la decisión de realizar un deploy en la plataforma Heroku, la cual provee addons como JawsDB MySQL, para hostear una base de datos en MySQL y así poder guardar las reservas en ella
 
-### Espero les guste mi solución a la consigna, muchas gracias por la oportunidad!
+
